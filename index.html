@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Average Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Course Average Calculator</h1>
+    <script>
+        // Ask the user for the number of courses
+        let numOfCourses = parseInt(prompt("How many courses did you finish?", "0"));
+
+        // Validate the input
+        if (isNaN(numOfCourses) || numOfCourses < 0) {
+            document.write("<p>Invalid Input!</p>");
+        } else {
+            // Initialize an empty array to store course marks
+            let courseMarks = [];
+
+            // Loop to get course marks
+            for (let i = 0; i < numOfCourses; i++) {
+                let mark = parseFloat(prompt(`Enter your mark for course ${i + 1}:`));
+                // Validate the mark input
+                if (!isNaN(mark) && mark >= 0) {
+                    courseMarks.push(mark);
+                } else {
+                    document.write(`<p>Invalid mark for course ${i + 1}. Please enter a valid number.</p>`);
+                    // Exit the loop if invalid input
+                    break;
+                }
+            }
+
+            // Calculate the average if there are valid marks
+            if (courseMarks.length > 0) {
+                let total = 0;
+                for (let mark of courseMarks) {
+                    total += mark;
+                }
+                let average = total / courseMarks.length;
+                document.write(`<p>Your average mark is: ${average.toFixed(2)}</p>`);
+            }
+        }
+    </script>
+</body>
+</html>
